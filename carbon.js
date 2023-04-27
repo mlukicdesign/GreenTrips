@@ -10,11 +10,11 @@ fetch("https://www.carboninterface.com/api/v1/vehicle_makes", {
   .then(data => {
     // Store the IDs of the vehicle makes
     data.forEach(data => {
-      cars.push(data.id);
+      cars.push(data.data.attributes.name);
+      console.log(data.data.attributes.name);
       localStorage.setItem("cars", JSON.stringify(cars));
     });
-    console.log(data);
-    console.log(cars); // Log the cars array
+  
   })
   .catch(error => console.error(error));
 
