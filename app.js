@@ -40,7 +40,7 @@
       // Extract the distance value in meters from the response
       let distanceInMeters = result.routes[0].legs[0].distance.value;
 
-      // Convert the distance to kilometers
+      
       let distanceInKms = distanceInMeters / 1000;
 
       // Calculate the CO2e emissions for the distance travelled
