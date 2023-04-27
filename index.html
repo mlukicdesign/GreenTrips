@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculate Carbon Emissions</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwSpuOnc9bIBLFQTv-zN8toFryzpAxDbg"></script>
+    
+  </head>
+  
+  <body onload="initMap();">
+   <!--  -->
+    <div id="map" style="height: 500px"></div>
+    <div>
+
+      <label for="auto-complete">auto-complete:</label>
+        <input type="text" id="auto-complete" name="auto-complete"><br>
+
+        <label for="start">Start:</label>
+        <input type="text" id="start" name="start"><br>
+      
+        <label for="end">End:</label>
+        <input type="text" id="end" name="end"><br>
+      
+        <button id="calculate">Calculate</button>
+        <p id="distance"></p>
+        <p id="emissions"></p>
+      </div>
+    </div>
+    <script src="app.js"></script>
+    <script src="carbon.js"></script>
+    <script src="autocomplete.js"></script>
+  </body>
+</html>
