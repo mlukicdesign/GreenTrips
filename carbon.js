@@ -13,7 +13,7 @@ fetch("https://www.carboninterface.com/api/v1/vehicle_makes", {
     // Store the IDs of the vehicle makes
     data.forEach(function(data) {
       cars.push(data.data.attributes.name);
-      console.log(data.data.attributes.name);
+      // console.log(data.data.attributes.name);
       localStorage.setItem("cars", JSON.stringify(cars));
     });
   })

@@ -2,31 +2,37 @@
 <html>
   <head>
     <title>Calculate Carbon Emissions</title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwSpuOnc9bIBLFQTv-zN8toFryzpAxDbg"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwSpuOnc9bIBLFQTv-zN8toFryzpAxDbg&libraries=places"></script>
     
   </head>
   
-  <body onload="initMap();">
-   <!--  -->
+  <body onload="initMap(); initAutocomplete();">
     <div id="map" style="height: 500px"></div>
     <div>
 
-      <label for="auto-complete">auto-complete:</label>
-        <input type="text" id="auto-complete" name="auto-complete"><br>
+      <label for="start">Start:</label>
+      <input type="text" id="start" name="start" placeholder="Enter origin" />
+      <label for="end">Start:</label>
+      <input type="text" id="end" name="end" placeholder="Enter destination" />
+      
+    
+      <div id="autocomplete-menu"></div>
 
-        <label for="start">Start:</label>
-        <input type="text" id="start" name="start"><br>
+  
       
-        <label for="end">End:</label>
-        <input type="text" id="end" name="end"><br>
+      <!-- 
+      <input type="text" id="start" name="start"><br>
       
-        <button id="calculate">Calculate</button>
-        <p id="distance"></p>
-        <p id="emissions"></p>
-      </div>
+      <label for="end">End:</label>
+      <input type="text" id="end" name="end"><br> -->
+      
+      <button id="calculate">Calculate</button>
+      <p id="distance"></p>
+      <p id="emissions"></p>
     </div>
-    <script src="app.js"></script>
-    <script src="carbon.js"></script>
-    <script src="autocomplete.js"></script>
+  </div>
+  <script src="app.js"></script>
+  <script src="carbon.js"></script>
+  <script src="autocomplete.js"></script>
   </body>
 </html>
