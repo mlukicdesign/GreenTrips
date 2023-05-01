@@ -22,10 +22,10 @@ function initAutocomplete() {
     endAutocomplete.addListener("place_changed", onPlaceChanged);
   
     // Attach the event listeners for the buttons
-    let startButton = document.getElementById("start-button");
-    let endButton = document.getElementById("end-button");
-    // startButton.addEventListener("click", onPlaceChanged);
-    // endButton.addEventListener("click", onPlaceChanged);
+    let startButton = document.getElementById("start");
+    let endButton = document.getElementById("end");
+    startButton.addEventListener("click", onPlaceChanged);
+    endButton.addEventListener("click", onPlaceChanged);
   }
   
   function onPlaceChanged() {
