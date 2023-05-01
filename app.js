@@ -95,16 +95,15 @@ function initMap() {
         }
       });
     };
-  
-    // When clicked run the co2 calculator
   }
-
+    // When clicked run the co2 calculator
+  
   function fetchDataAndCalculateRoute() {
     getStartData(startInput, apiKey);
     getEndData(endInput, apiKey);
-    updateMap(startLatitudeStart, endLongitudeStart),
-    calculateRoute();
-  }
+    updateMap(startLatitudeStart, endLongitudeStart)}
+    
+  
   
   fetchDataAndCalculateRoute(startInput, apiKey, endInput, startLatitudeStart, endLongitudeStart);
   
