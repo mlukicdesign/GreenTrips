@@ -6,17 +6,20 @@ fetch("https://www.carboninterface.com/api/v1/vehicle_makes", {
     "Content-Type": "application/json"
   },
 })
-  .then(response => response.json())
-  .then(data => {
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(data) {
     // Store the IDs of the vehicle makes
-    data.forEach(data => {
+    data.forEach(function(data) {
       cars.push(data.data.attributes.name);
-      console.log(data.data.attributes.name);
+      // console.log(data.data.attributes.name);
       localStorage.setItem("cars", JSON.stringify(cars));
     });
-  
   })
-  .catch(error => console.error(error));
+  .catch(function(error) {
+    console.error(error);
+  });
 
 
 
