@@ -37,7 +37,8 @@ function getGeoData(address) {
         lng: data.results[0].geometry.location.lng,
       };
     })
-    .catch((error) => console.error(error));
+    .catch((error) => document.getElementById("distance").innerHTML =
+    "Error: Please enter two valid destinations within the United States");
 }
 
 //   Create the map
