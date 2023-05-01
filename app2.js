@@ -2,38 +2,41 @@
 const apiKey = 'AIzaSyBwSpuOnc9bIBLFQTv-zN8toFryzpAxDbg';
 const startEl = document.getElementById('start')
 const endEl = document.getElementById('end')
-let startLatitudeStart, endLongitudeStart, startLatitudeEnd, endLongitudeEnd;
+let startLatitude, startLongitude, endLatitude, endLongitude;
+
 // let startInput = startEl.value
 // let endInput = endEl.value
 const startInput = '1600 Amphitheatre Parkway, Mountain View, CA';
 const endInput = '1159 N Rengstorff Ave, Mountain View, CA';
 
-
 function getStartData(startInput, apiKey) {
-  let geocodingStartApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(startInput)}&key=${apiKey}`;
+  let geocodingStartApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+    startInput
+  )}&key=${apiKey}`;
 
-  fetch(geocodingStartApiUrl)
-    .then(response => response.json())
-    .then(data => {
-      let startLatitudeStart = data.results[0].geometry.location.lat;
-      let endLongitudeStart = data.results[0].geometry.location.lng;
-      console.log(startLatitudeStart, endLongitudeStart);
-    })
-    .catch(error => console.error(error));
+  return fetch(geocodingStartApiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      // Get the latitude and longitude of the first result
+      startLatitude = data.results[0].geometry.location.lat;
+      startLongitude = data.results[0].geometry.location.lng;
+    });
 }
+
+// Get the latitude and longitude of the end location using the Google Maps Geocoding API
 function getEndData(endInput, apiKey) {
-  let geocodingEndApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(endInput)}&key=${apiKey}`;
+  let geocodingEndApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+    endInput
+  )}&key=${apiKey}`;
 
-  fetch(geocodingEndApiUrl)
-    .then(response => response.json())
-    .then(data => {
-      let startLatitudeEnd = data.results[0].geometry.location.lat;
-      let endLongitudeEnd = data.results[0].geometry.location.lng;
-      console.log(startLatitudeEnd, endLongitudeEnd);
-
-    })
-    .catch(error => console.error(error));
-} 
+  return fetch(geocodingEndApiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      // Get the latitude and longitude of the first result
+      endLatitude = data.results[0].geometry.location.lat;
+      endLongitude = data.results[0].geometry.location.lng;
+    });
+}
 
 //   Create the map
 function initMap() {
@@ -42,7 +45,8 @@ function initMap() {
     zoom: 13,
   });}
 
-  function updateMap(startLatitudeStart, endLongitudeStart) {
+
+  function updateMap(startLatitudeStart, endLongitudeStart, startLatitudeEnd, endLongitudeEnd) {
   
     let startMarker = new google.maps.Marker({
       map: map,
@@ -61,7 +65,7 @@ function initMap() {
       map: map,
     });
   
-    function calculateRoute() {
+    let calculateRoute = function () {
       let start = startMarker.getPosition();
       let end = endMarker.getPosition();
   
@@ -82,32 +86,27 @@ function initMap() {
   
           // Calculate the CO2e emissions for the distance travelled
           let co2eEmissions = (distanceInKms * 197.75).toFixed(1);// swap for car data on carbon footprint
-     
   
           // Display the distance in kilometers and CO2e emissions
           document.getElementById("distance").innerHTML =
             "Distance: " + distanceInKms.toFixed(1) + " km";
           document.getElementById("emissions").innerHTML =
             "CO2e Emissions: " + co2eEmissions + " g";
-      
-            
-        
         }
       });
     };
   
     // When clicked run the co2 calculator
-  }
-
-  function fetchDataAndCalculateRoute() {
-    getStartData(startInput, apiKey);
-    getEndData(endInput, apiKey);
-    updateMap(startLatitudeStart, endLongitudeStart),
     calculateRoute();
   }
   
-  fetchDataAndCalculateRoute(startInput, apiKey, endInput, startLatitudeStart, endLongitudeStart);
+  function fetchDataAndCalculateRoute() {
+    getStartData(startInput, apiKey);
+    getEndData(endInput, apiKey);
+  }
   
+  fetchDataAndCalculateRoute();
+
 
   
   // document

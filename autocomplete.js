@@ -4,7 +4,7 @@ function initAutocomplete() {
       document.getElementById("start"),
       {
         types: ["establishment"],
-        componentRestrictions: { country: ["AU"] },
+        componentRestrictions: { country: ["US"] },
         fields: ["place_id", "geometry", "name"],
       }
     );
@@ -12,7 +12,7 @@ function initAutocomplete() {
       document.getElementById("end"),
       {
         types: ["establishment"],
-        componentRestrictions: { country: ["AU"] },
+        componentRestrictions: { country: ["US"] },
         fields: ["place_id", "geometry", "name"],
       }
     );
@@ -24,8 +24,8 @@ function initAutocomplete() {
     // Attach the event listeners for the buttons
     let startButton = document.getElementById("start-button");
     let endButton = document.getElementById("end-button");
-    startButton.addEventListener("click", onPlaceChanged);
-    endButton.addEventListener("click", onPlaceChanged);
+    // startButton.addEventListener("click", onPlaceChanged);
+    // endButton.addEventListener("click", onPlaceChanged);
   }
   
   function onPlaceChanged() {
