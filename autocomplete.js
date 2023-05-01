@@ -20,33 +20,6 @@ function initAutocomplete() {
     );
 
 }
-    // Attach the event listeners for start and end inputs
-    // startAutocomplete.addListener("place_changed", onPlaceChanged);
-    // endAutocomplete.addListener("place_changed", onPlaceChanged);
-  
-    // // Attach the event listeners for the buttons
-    // let startButton = document.getElementById("start");
-    // let endButton = document.getElementById("end");
-    // startButton.addEventListener("click", onPlaceChanged);
-    // endButton.addEventListener("click", onPlaceChanged);
-
-  
-  // function onPlaceChanged() {
-  //   // Get the selected place from the relevant input field
-  //   let place;
-  //   if (this.id === "start" ) {
-  //     place = startAutocomplete.getPlace();
-  //   } else if (this.id === "end" ) {
-  //     place = endAutocomplete.getPlace();
-  //   }
-  
-    // Update the UI with the selected place's name
-    // let details = document.getElementById("details");
-    // if (!place.geometry) {
-    //   details.innerHTML = "Enter a place";
-    // } else {
-    //   details.innerHTML = place.name;
-    // }
-  
+    
   
 
