@@ -1,12 +1,7 @@
 const apiKey = "AIzaSyBwSpuOnc9bIBLFQTv-zN8toFryzpAxDbg";
 
-
-// const startInput = "1600 Amphitheatre Parkway, Mountain View, CA";
-// const endInput = "1159 N Rengstorff Ave, Mountain View, CA";
-
 window.addEventListener('load', function(){
   const map = initMap(); 
-  
   
   document
   .getElementById("calculate")
@@ -22,7 +17,6 @@ window.addEventListener('load', function(){
     ]).then(function(results){
       const geoDataStart = results[0];
       const geoDataEnd = results[1];
-      console.log(geoDataEnd);
       updateMap(geoDataStart, geoDataEnd, map);
     });
 
