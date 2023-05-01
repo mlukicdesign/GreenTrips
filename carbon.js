@@ -1,3 +1,7 @@
+
+
+function callCars () {
+
 let cars = [];
 fetch("https://www.carboninterface.com/api/v1/vehicle_makes", {
   method: "GET",
@@ -21,7 +25,8 @@ fetch("https://www.carboninterface.com/api/v1/vehicle_makes", {
     console.error(error);
   });
 
+  console.log(data);
 
+}
 
-
-
+callCars()

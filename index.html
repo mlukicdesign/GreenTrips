@@ -9,9 +9,15 @@
   <!-- hello world -->
   
   <body onload="">
+<!-- map -->
+    <header>
+      <h1>Green Trips</h1>
+      </header>
     <div id="map" style="height: 500px"></div>
-    <div>
+   
+  <div>
 
+    <section>
       <label for="start">Start:</label>
       <input type="text" id="start" name="start" placeholder="Enter origin" />
       
@@ -22,7 +28,19 @@
       <button id="calculate">Calculate</button>
       <p id="distance"></p>
       <p id="emissions"></p>
+    </section>
+
+    <div id="vehicle-select">
+      <h2>Select Your Vehicle</h2>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+      <input type="text" id="vehicleInput" placeholder="Select Your Vehicle"/>
+      <button type="submit">Submit</button>
     </div>
+
+    <div id="emmissionOutput">
+
+    </div>
+
   </div>
   <script src="autocomplete.js"></script>
   <script src="app.js"></script>
