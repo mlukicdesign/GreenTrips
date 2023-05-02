@@ -17,7 +17,18 @@ window.addEventListener('load', function(){
     ]).then(function(results){
       const geoDataStart = results[0];
       const geoDataEnd = results[1];
-      updateMap(geoDataStart, geoDataEnd, map);
+      return updateMap(geoDataStart, geoDataEnd, map);
+      // get distance from google api
+    }).then(function(distanceInKms){
+      // get car id
+      // target drop down.value
+      const carId = document.getElementById.value;
+      // call the emission api
+      return getEmission(carId, distanceInKms)
+      
+    }).then(function(emission){
+      // then put in dom
+
     });
 
   });
@@ -50,48 +61,52 @@ function initMap() {
 }
 
 function updateMap(geoDataStart, geoDataEnd, map) {
-  let startMarker = new google.maps.Marker({
-    map: map,
-    position: geoDataStart,
-    draggable: true,
-  });
 
-  let endMarker = new google.maps.Marker({
-    map: map,
-    position: geoDataEnd,
-    draggable: true,
-  });
+  return new Promise(function(resolve, reject){
 
-  let directionsService = new google.maps.DirectionsService();
-  let directionsRenderer = new google.maps.DirectionsRenderer({
-    map: map,
-  });
-
-  let request = {
-    origin: geoDataStart,
-    destination: geoDataEnd,
-    travelMode: "DRIVING",
-  };
-
-  directionsService.route(request, function (result, status) {
-    if (status == "OK") {
-      directionsRenderer.setDirections(result);
-
-      // Extract the distance value in meters from the response
-      let distanceInMeters = result.routes[0].legs[0].distance.value;
-
-      let distanceInKms = distanceInMeters / 1000;
-
-      // Calculate the CO2e emissions for the distance travelled
-      let co2eEmissions = (distanceInKms * 197.75).toFixed(1); // swap for car data on carbon footprint
-
-      // Display the distance in kilometers and CO2e emissions
-      document.getElementById("distance").innerHTML =
-        "Distance: " + distanceInKms.toFixed(1) + " km";
-      document.getElementById("emissions").innerHTML =
-        "CO2e Emissions: " + co2eEmissions + " g";
-    }
-  });
+    let startMarker = new google.maps.Marker({
+      map: map,
+      position: geoDataStart,
+      draggable: true,
+    });
+  
+    let endMarker = new google.maps.Marker({
+      map: map,
+      position: geoDataEnd,
+      draggable: true,
+    });
+  
+    let directionsService = new google.maps.DirectionsService();
+    let directionsRenderer = new google.maps.DirectionsRenderer({
+      map: map,
+    });
+  
+    let request = {
+      origin: geoDataStart,
+      destination: geoDataEnd,
+      travelMode: "DRIVING",
+    };
+  
+    directionsService.route(request, function (result, status) {
+      if (status == "OK") {
+        directionsRenderer.setDirections(result);
+  
+        // Extract the distance value in meters from the response
+        let distanceInMeters = result.routes[0].legs[0].distance.value;
+  
+        let distanceInKms = distanceInMeters / 1000;
+  
+        // Calculate the CO2e emissions for the distance travelled
+        let co2eEmissions = (distanceInKms * 197.75).toFixed(1); // swap for car data on carbon footprint
+  
+        // Display the distance in kilometers and CO2e emissions
+        document.getElementById("distance").innerHTML =
+          "Distance: " + distanceInKms.toFixed(1) + " km";
+        document.getElementById("emissions").innerHTML =
+          "CO2e Emissions: " + co2eEmissions + " g";
+             }
+          resolve});//make this work
+  })
 
 };
 
