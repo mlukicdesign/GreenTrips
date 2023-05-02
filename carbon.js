@@ -12,6 +12,7 @@ fetch("https://www.carboninterface.com/api/v1/vehicle_makes", {
 })
   .then(function(response) {
     return response.json();
+    
   })
   .then(function(data) {
     // Store the IDs of the vehicle makes
