@@ -1,8 +1,6 @@
-
-
-function callCars () {
-
 let cars = [];
+let fuel = [];
+
 fetch("https://www.carboninterface.com/api/v1/vehicle_makes", {
   method: "GET",
   headers: {
@@ -16,19 +14,28 @@ fetch("https://www.carboninterface.com/api/v1/vehicle_makes", {
   })
   .then(function(data) {
     // Store the IDs of the vehicle makes
-    data.forEach(function(data) {
-      cars.push(data.data.attributes.name);
-      console.log(data);
-      console.log(data.data.attributes.name);
-      localStorage.setItem("cars", JSON.stringify(cars));
+    data.forEach(function(vehicle) {
+      let carNameandID = {
+       "name": vehicle.data.attributes.name,
+       "ID": vehicle.data.id,
+      }
+        cars.push(carNameandID)
+      // console.log(vehicle);
+      // console.log(data.data.attributes.name);
+      // console.log(data.data.attributes.carbon_kg);
+
+      localStorage.setItem("cars", JSON.stringify(carNameandID));
     });
+    
   })
   .catch(function(error) {
     console.error(error);
   });
+  // console.log(carsID);
 
   console.log(data);
 
 }
 
-callCars()
+
+
