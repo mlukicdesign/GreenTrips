@@ -26,8 +26,11 @@ window.addEventListener('load', function(){
       const carId = document.getElementById('car-dropdown').value;
       console.log(carId);
       // call the emission api
+      // getVehicleMake()
+      
+      // Create VehicleModelID
       getEmission(carId, distanceInKms)
-   
+
       // 
       
     // }).then(function(calcEmissions){
