@@ -5,7 +5,7 @@ const carDropdown = document.getElementById('car-dropdown');
 fetch("https://www.carboninterface.com/api/v1/vehicle_makes", {
   method: "GET",
   headers: {
-    Authorization: "Bearer 6QeGE5VqAKrw1NYnUNp8Q",
+    Authorization: "Bearer Y6YfKnrXdr0PVQgyBvnyw",
     "Content-Type": "application/json",
   },
 })
@@ -28,7 +28,10 @@ fetch("https://www.carboninterface.com/api/v1/vehicle_makes", {
   .catch(function (error) {
     console.error(error);
   });
+// we need to make this a function. we need to store distanceInKm in distance_value
+function getEmission(carId, distanceInKms){
 
+}
 const requestBody = {
   type: "vehicle",
   distance_unit: "km",
@@ -38,7 +41,7 @@ const requestBody = {
 
 const headers = {
   "Content-Type": "application/json",
-  Authorization: "Bearer 6QeGE5VqAKrw1NYnUNp8Q",
+  Authorization: "Bearer Y6YfKnrXdr0PVQgyBvnyw",
 };
 
 fetch("https://www.carboninterface.com/api/v1/estimates", {
