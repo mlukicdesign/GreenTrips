@@ -23,13 +23,17 @@ window.addEventListener('load', function(){
     }).then(function(distanceInKms){
       // get car id
       // target drop down.value
-      const carId = document.getElementById('xxxxx').value;
+      const carId = document.getElementById('car-dropdown').value;
+      console.log(carId);
       // call the emission api
-      return getEmission(carId, distanceInKms)
+      getEmission(carId, distanceInKms)
+   
       // 
       
-    }).then(function(calcEmissions){
-      // then put in dom PUT CARBON_KG in DOM
+    // }).then(function(calcEmissions){
+    //   document.getElementById("emissions").innerHTML =
+    //   "CO2e Emissions: " + calcEmissions + " g";
+    //   // then put in dom PUT CARBON_KG in DOM
 
     });
 
@@ -101,15 +105,19 @@ function updateMap(geoDataStart, geoDataEnd, map) {
         let distanceInKms = distanceInMeters / 1000;
   
         // Calculate the CO2e emissions for the distance travelled
-        let co2eEmissions = (distanceInKms * 197.75).toFixed(1); // swap for car data on carbon footprint
+        // let co2eEmissions = (distanceInKms * 197.75).toFixed(1); // swap for car data on carbon footprint
   
         // Display the distance in kilometers and CO2e emissions
         document.getElementById("distance").innerHTML =
           "Distance: " + distanceInKms.toFixed(1) + " km";
-        document.getElementById("emissions").innerHTML =
-          "CO2e Emissions: " + co2eEmissions + " g";
-             }
-          resolve});//make this work
+        // document.getElementById("emissions").innerHTML =
+          // "CO2e Emissions: " + co2eEmissions + " g";
+          resolve(distanceInKms)
+        }
+        else {
+          reject("Could not retrieve distance");
+        }
+        });//make this work
   })
 
 };
