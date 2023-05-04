@@ -11,33 +11,44 @@
   <body onload="">
 <!-- map -->
     <header>
-      <h1>Green Trips</h1>
+      <h1>Toyota Green Trips</h1>
       </header>
     <div id="map" style="height: 500px"></div>
    
   <div>
 
-    <section>
+    <section id="journeyInputs">
       <label for="start">Start:</label>
-      <input type="text" id="start" name="start" placeholder="Enter origin" />
+      <input type="text" id="start" name="start" placeholder="Enter start destination" />
       
       <label for="end">End:</label>
-      <input type="text" id="end" name="end" placeholder="Enter destination" />
+      <input type="text" id="end" name="end" placeholder="Enter end destination" />
+      <div id="autocomplete-menu"></div>
+
+      <label for="journeyName"></label>
+      <input type="text" id="end" name="end" placeholder="Name Your Journey" />
       <div id="autocomplete-menu"></div>
       
-      <button id="calculate">Calculate</button>
       <p id="distance"></p>
+      <h2> Your Emissions Output</h2>
       <p id="emissions"></p>
-    </section>
+     
 
+      <button id="calculate">Calculate</button>
+    
+      
+    </section>
+    
     <div id="vehicle-select">
       <h2>Select Your Vehicle</h2>
       <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
     </div>
-
+    
     <div id="emmissionOutput">
-
+      
     </div>
+
+    <div>
     <label for="car">Choose a car: </label>
     <select id="car-dropdown" name="car">
       <optgroup label="Toyota">
@@ -46,9 +57,10 @@
         <option value="14949244-b6d1-4a11-970f-73f75408f931">Corolla Wagon</option>
       </optgroup>
       <button type="submit">Submit</button>
-      
+    </div>
 
-  </div>
+  
+    
   <script src="autocomplete.js"></script>
   <script src="app.js"></script>
   <script src="carbon.js"></script>
