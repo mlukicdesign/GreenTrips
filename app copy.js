@@ -7,14 +7,17 @@ window.addEventListener('load', function(){
   .getElementById("calculate")
   .addEventListener("click", function(){
     // TODO: get user input 
+    initAutocomplete();
     const startEl = document.getElementById("start");
     const endEl = document.getElementById("end");
     let startInput = startEl.value
     let endInput = endEl.value
-    // error if no start, end or car id is entered. IF STATEMENT
+    const userCarSelectionEl = document.getElementById("car-dropdown");
+    let userCarSelection = userCarSelectionEl.value
     Promise.all([
       getGeoData(startInput),
-      getGeoData(endInput)
+      getGeoData(endInput),
+      getEmissionData(userCarSelection)
     ]).then(function(results){
       const geoDataStart = results[0];
       const geoDataEnd = results[1];
@@ -23,18 +26,16 @@ window.addEventListener('load', function(){
     }).then(function(distanceInKms){
       // get car id
       // target drop down.value
-      const carId = document.getElementById('xxxxx').value;
+      const carId = document.getElementById.value;
       // call the emission api
       return getEmission(carId, distanceInKms)
-      // 
       
     }).then(function(calcEmissions){
-      // then put in dom PUT CARBON_KG in DOM
+      // then put in dom
 
     });
 
   });
-  initAutocomplete();
 })
 
 
