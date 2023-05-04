@@ -6,7 +6,7 @@ function initAutocomplete() {
       document.getElementById("start"),
       {
         types: ["establishment"],
-        componentRestrictions: { country: ["US"] },
+        componentRestrictions: { country: ["AU"] },
         fields: ["place_id", "geometry", "name"],
       }
     );
@@ -14,7 +14,7 @@ function initAutocomplete() {
       document.getElementById("end"),
       {
         types: ["establishment"],
-        componentRestrictions: { country: ["US"] },
+        componentRestrictions: { country: ["AU"] },
         fields: ["place_id", "geometry", "name"],
       }
     );
