@@ -2,34 +2,43 @@ const apiKey = "AIzaSyBwSpuOnc9bIBLFQTv-zN8toFryzpAxDbg";
 
 window.addEventListener('load', function(){
   const map = initMap(); 
-  
+  const locationData = getEmptyLocationObj();
+
   document
   .getElementById("calculate")
   .addEventListener("click", function(){
     // TODO: get user input 
     const startEl = document.getElementById("start");
     const endEl = document.getElementById("end");
-    let startInput = startEl.value
-    let endInput = endEl.value
+    const key =  document.getElementById("journey-name").value;
+    
+    locationData.address.start = startEl.value
+    locationData.address.end = endEl.value
+
     // error if no start, end or car id is entered. IF STATEMENT
     Promise.all([
-      getGeoData(startInput),
-      getGeoData(endInput)
+      getGeoData(locationData.address.start),
+      getGeoData(locationData.address.end)
     ]).then(function(results){
-      const geoDataStart = results[0];
-      const geoDataEnd = results[1];
-      return updateMap(geoDataStart, geoDataEnd, map);
+      locationData.geodata.start= results[0];
+      locationData.geodata.end = results[1];
+      return updateMap(locationData.geodata.start, locationData.geodata.end, map);
       // get distance from google api
     }).then(function(distanceInKms){
       // get car id
       // target drop down.value
+      locationData.distance = distanceInKms
       const carId = document.getElementById('car-dropdown').value;
-      console.log(carId);
+      locationData.carId = carId
       // call the emission api
       // getVehicleMake()
       
       // Create VehicleModelID
-      getEmission(carId, distanceInKms)
+      getEmission(carId, distanceInKms).then((co2) => {
+        locationData.emissions = co2;
+        
+        saveNewJourney(key, locationData)
+      })
 
       // 
       
@@ -41,10 +50,55 @@ window.addEventListener('load', function(){
     });
 
   });
+
+
   initAutocomplete();
 })
 
+//function updateDOM()
 
+function getEmptyLocationObj(){
+  return {
+    address: {
+     start:"",
+     end:""
+    },
+    geodata: {
+     start:{},
+     end:{}
+    },
+    distance: 0,
+    emissions: 0,
+    carId:0
+ }
+}
+
+function saveNewJourney(key, locationObj){
+  const saved = JSON.parse(localStorage.getItem("savedJourneys")) || {};
+
+  if(key in saved){
+    alert("this journey already exists")
+    return;
+  }
+
+  saved[key] = locationObj
+
+  localStorage.setItem("savedJourneys", JSON.stringify(saved))
+
+  displaySaved()
+}
+
+function displaySaved(){
+  const saved = JSON.parse(localStorage.getItem("savedJourneys"));
+  $("#search-buttons").empty()
+
+  for(const [key, locationObj] of Object.entries(saved)){
+    const btnHTML = $(`
+    <button class="mybutton" id=${key}>${key}</button>
+    `)
+    $("#search-buttons").append(btnHTML)
+  }
+}
 
 function getGeoData(address) {
   let geocodingStartApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(

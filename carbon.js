@@ -88,7 +88,7 @@ function getEmission(carId, distanceInKms) {
     Authorization: "Bearer Y6YfKnrXdr0PVQgyBvnyw",
   };
 
-  fetch("https://www.carboninterface.com/api/v1/estimates", {
+  return fetch("https://www.carboninterface.com/api/v1/estimates", {
     method: "POST",
     headers: headers,
     body: JSON.stringify(requestBody),
@@ -105,9 +105,7 @@ function getEmission(carId, distanceInKms) {
       "CO2e Emissions: " + fuelType.carbonOutput + " g";
       fuel.push(fuelType);
       console.log('Fuel Type',fuelType);
-      let c02 = fuelType.carbonOutput
-      console.log(c02)
-      return c02
+      return fuelType.carbonOutput
     })
     .catch(function (error) {
       console.error(error);
