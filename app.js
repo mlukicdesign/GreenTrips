@@ -131,6 +131,7 @@ function getGeoData(address) {
 //   Create the map
 function initMap() {
   return new google.maps.Map(document.getElementById("map"), {
+    mapId: "91f341ea955a6535",
     center: { lat: -31.953512, lng: 115.857048 },
     zoom: 13,
   });
