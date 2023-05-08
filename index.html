@@ -3,63 +3,86 @@
   <head>
     <title>Calculate Carbon Emissions</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwSpuOnc9bIBLFQTv-zN8toFryzpAxDbg&libraries=places"></script>
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   </head>
 
   <!-- hello world -->
   
-  <body onload="">
+  <body class="is-fullheight is-fullwidth" onload="">
 <!-- map -->
-    <header>
-      <h1>Toyota Green Trips</h1>
-      </header>
-    <div id="map" style="height: 500px"></div>
-   
-  <div>
+    <nav class="navbar has-shadow" role="navigation" aria-label="man navigation">
+      <h1 class="is-size-1 p-5 has-text-weight-bold has-text-success">Toyota Green Trips</h1>
+    </nav>
 
-    <section id="journeyInputs">
+<!-- main body container -->
+<div class="is-fullheight is-fullwidth columns" id="main-body">
+
+
+<!-- journey input -->
+  <div class="column is-one-fifth p-6 is-fullheight" id="journeyInputs">
+
+    <div class="pb-4">
+
+      <h1 class="is-size-3 has-text-success">Select Your Destinations</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem beatae autem ipsa temporibus laudantium facilis velit nobis.</P>
+
       <label for="start">Start:</label>
-      <input type="text" id="start" name="start" placeholder="Enter start destination" />
+      <input class="input is-medium is-rounded has-shadow" type="text" id="start" name="start" placeholder="Enter start destination" />
       
       <label for="end">End:</label>
-      <input type="text" id="end" name="end" placeholder="Enter end destination" />
+      <input class="input is-medium is-rounded" type="text" id="end" name="end" placeholder="Enter end destination" />
       <div id="autocomplete-menu"></div>
 
-      <label for="journeyName"></label>
-      <input type="text" id="journey-name" name="end" placeholder="Name Your Journey" />
+      <label for="journeyName">Name Your Journey </label>
+      <input class="input is-medium is-rounded" type="text" id="journey-name" name="end" placeholder="Name Your Journey" />
       <div id="autocomplete-menu"></div>
-      
-      <p id="distance"></p>
-      <h2> Your Emissions Output</h2>
-      <p id="emissions"></p>
-     
 
-      <button id="calculate">Calculate</button>
-    
-      
-    </section>
-    
-    <div id="vehicle-select">
-      <h2>Select Your Vehicle</h2>
-    </div>
-    
-        <div id="search-buttons"></div>
-      
-    
-    <div id="emmissionOutput">
-      
     </div>
 
-    <div>
-    <label for="car">Choose a car: </label>
-    <select id="car-dropdown" name="car">
-      <optgroup label="Toyota">
-        <option value="7268a9b7-17e8-4c8d-acca-57059252afe9">Corolla</option>
-        <option value="a2d97d19-14c0-4c60-870c-e734796e014e">Camry</option>
-        <option value="14949244-b6d1-4a11-970f-73f75408f931">Corolla Wagon</option>
-      </optgroup>
-      <button type="submit">Submit</button>
+
+      <div id="vehicle-select" class="pb-4">
+        <h2 class="is-size-3 has-text-success">Select Your Vehicle</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt vel neque voluptatum animi ex eveniet a dolor incidunt perferendis</p>
+
+        <div class="is-fullwidth dropdown pb-6">
+        <select id="car-dropdown" name="car" class="">
+          <optgroup label="Toyota">
+            <option value="7268a9b7-17e8-4c8d-acca-57059252afe9">Corolla</option>
+            <option value="a2d97d19-14c0-4c60-870c-e734796e014e">Camry</option>
+            <option value="14949244-b6d1-4a11-970f-73f75408f931">Corolla Wagon</option>
+          </optgroup>
+        </select>
+        <button type="submit" class="button">Submit</button>
+        </div>
+        
+        <button class="button is-medium is-rounded is-fullwidth is-success" id="calculate">Calculate</button>
+
+        <p id="distance"></p>
+        <h2 class="is-size-3 has-text-success"> Your Emissions Output</h2>
+        <p id="emissions"></p>
+        
+        
+      </div>
+      
     </div>
+
+    <!-- map div -->
+    <div id="map" class="column is-three-fifths is-fullheight"></div>
+    
+    <!-- saved Trips     -->
+    <div class="column is-one-fifth p-6" id="search-buttons">
+     <h1 class="is-size-3">Your Saved Trips</h1>
+     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis quod sit ducimus temporibus cum neque error nam sequi excepturi omnis incidunt ut, labore aspernatur sunt optio nihil illum praesentium aliquid!</p>
+    </div>
+      
+ </div>
+    <!-- footer div -->
+  <div class="container.is-fullwidth p-4">
+    <h2 class="has-text-success has-text-weight-bold pl-6">github link here</h2>
+  </div>
+
+    
+
   <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script> 
   <script src="autocomplete.js"></script>
   <script src="app.js"></script>
