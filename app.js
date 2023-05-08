@@ -94,7 +94,7 @@ function displaySaved() {
 
   for (const [key, locationObj] of Object.entries(saved)) {
     const btnHTML = $(`
-    <button class="mybutton" id=${key} onclick="updateMap({lat: -27.4671254, lng: 153.0253696}, {lat: -26.4671254, lng: 153.0253696})">${key}</button>
+    <button class="mybutton button is-medium is-rounded is-fullwidth is-success pb-3" id=${key} onclick="updateMap({lat: -27.4671254, lng: 153.0253696}, {lat: -26.4671254, lng: 153.0253696})">${key}</button>
     `); // TODO: Change hard coded Lat and Lng object to the geocode.start and geocode.end of the saved[key] object
     $("#search-buttons").append(btnHTML);
   }
