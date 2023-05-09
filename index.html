@@ -4,47 +4,52 @@
     <title>Calculate Carbon Emissions</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwSpuOnc9bIBLFQTv-zN8toFryzpAxDbg&libraries=places"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
   </head>
 
   <!-- hello world -->
   
-  <body class="is-fullheight is-fullwidth" onload="">
+  <body class="" onload="">
 <!-- map -->
-    <nav style="height: 10vh;" class="navbar has-shadow" role="navigation" aria-label="man navigation">
-      <h1 class="is-size-1 p-5 has-text-weight-bold has-text-success">Toyota Green Trips</h1>
+    <nav class="navbar has-shadow pl-6 pt-4 pb-4" role="navigation" aria-label="man navigation">
+      <div class="navbar-brand mr-3">
+        <img src="/assets/toyotagreentripslogo.png" style="width:100px; height: 65px; display:inline;">
+      </div>
+      <h1 class="is-size-1 has-text-weight-bold has-text-success">Toyota Green Trips</h1>
     </nav>
 
 <!-- main body container -->
-<div style="height: 80vh;" class="columns" id="main-body">
+<div style="height: 85vh" class="columns is-large is-desktop" id="main-body">
 
 
 <!-- journey input -->
-  <div style="min-width: 500px;" class="column is-3 p-6 is-fullheight is-half-tablet is-fixed" id="journeyInputs">
+  <div style="min-width: 500px; overflow: scroll;" class="column is-two-fifths-desktop p-6 is-fixed" id="journeyInputs">
 
     <div class="pb-4">
+      <p class="mb-6">Introducing the Toyota Carbon Emissions Calculator, an innovative app designed to help you make informed decisions about the environmental impact of your vehicle. With this app, you can easily calculate the carbon emissions of your Toyota vehicle based on your start and end destination. Whether you're planning a road trip, commuting to work, or simply running errands, our app provides you with accurate and up-to-date information on the carbon footprint of your Toyota vehicle.</P>
 
       <h1 class="is-size-3 has-text-success">Select Your Destinations</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem beatae autem ipsa temporibus laudantium facilis velit nobis.</P>
-
-      <label for="start">Start:</label>
-      <input class="input is-medium is-rounded has-shadow" type="text" id="start" name="start" placeholder="Enter start destination" />
+  
+   
+      <input class="input is-medium is-rounded has-shadow mb-3 mt-3" type="text" id="start" name="start" placeholder="Enter start destination" />
       
-      <label for="end">End:</label>
-      <input class="input is-medium is-rounded" type="text" id="end" name="end" placeholder="Enter end destination" />
+     
+      <input class="input is-medium is-rounded mb-3" type="text" id="end" name="end" placeholder="Enter end destination" />
       <div id="autocomplete-menu"></div>
 
-      <label for="journeyName">Name Your Journey </label>
-      <input class="input is-medium is-rounded" type="text" id="journey-name" name="end" placeholder="Name Your Journey" />
+    
+      <input class="input is-medium is-rounded mb-3" type="text" id="journey-name" name="end" placeholder="Name Your Journey" />
       <div id="autocomplete-menu"></div>
 
     </div>
 
+    <!-- Vehicle Selection -->
 
       <div id="vehicle-select" class="pb-4">
         <h2 class="is-size-3 has-text-success">Select Your Vehicle</h2>
         <p>&nbsp;</p>
 
-        <div class="is-fullwidth dropdown pb-6">
+        <div class="select is-fullwidth is-active pb-6 is-success mb-5 is-medium">
         <select id="car-dropdown" name="car" class="">
           <optgroup label="Toyota">
             <option value="7268a9b7-17e8-4c8d-acca-57059252afe9">Corolla</option>
@@ -54,11 +59,11 @@
         </select>
         </div>
         
-        <button class="button is-medium is-rounded is-fullwidth is-success" id="calculate">Calculate</button>
+        <button class="button is-medium is-rounded is-fullwidth is-success mb-3" id="calculate">Calculate</button>
 
-        <p id="distance"></p>
         <h2 class="is-size-3 has-text-success"> Your Emissions Output</h2>
-        <p id="emissions"></p>
+        <h1 class="is-size-3 has-text-success has-text-weight-bold" id="distance"></h1>
+        <h1 class="is-size-3 has-text-success has-text-weight-bold" id="emissions"></1>
         
         
       </div>
@@ -66,21 +71,26 @@
     </div>
 
     <!-- map div -->
-    <div style="min-height: 400px;" id="map" class="column is-7"></div>
+    <div style="min-height: 400px;" id="map" class="column is-two-fifths-desktop"></div>
     
     <!-- saved Trips -->
-    <div class="column is-2 p-6">
-      <h1 class="is-size-3">Your Saved Trips</h1>
+    <div style="overflow: scroll;" class="column p-4 is-one-fifths-desktop">
+      <h1 class="is-size-3 has-text-success mb-3">Your Saved Trips</h1>
         <div id="search-buttons">
           <p>&nbsp;</p>
         </div>
     </div> 
 
- </div>
-    <!-- footer div -->
-  <div style="height: 10vh;" class="container.is-fullwidth p-4 has-background-white-ter">
-    <h2 class="has-text-success has-text-weight-bold pl-6">github link here</h2>
   </div>
+  <!-- footer div -->
+<div style="background-color: white" class="footer p-4">
+  <a href="https://github.com/your-username" target="_blank">
+    <span class="icon is-size-3">
+      <i class="fab fa-github"></i>
+    </span>
+    <p style="display:inline;" class="has-text-success has-text-weight-bold pl-3">Github link here</p>
+  </a>
+</div>
 
     
 
