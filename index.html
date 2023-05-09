@@ -5,28 +5,27 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwSpuOnc9bIBLFQTv-zN8toFryzpAxDbg&libraries=places"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
-    <link rel="stylesheet" href="./style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
   <!-- hello world -->
   
-  <body>
+ <body>
 
-    <nav class="navbar has-shadow pl-6 pt-4 pb-4" role="navigation" aria-label="man navigation">
-      <div class="navbar-brand mr-3">
-        <img src="./assets/toyotagreentripslogo.png" style="width:100px; height: 65px; display:inline;">
-      </div>
-      <h1 class="is-size-1 has-text-weight-bold has-text-success">Toyota Green Trips</h1>
-    </nav>
 
+   
+   <nav class="navbar has-shadow pt-4 pb-4" role="navigation" aria-label="man navigation">
+     <div class="navbar-brand pl-5">
+       <img src="./assets/toyotagreentripslogo.png" style="width:100px; height: 65px;">
+     </div>
+     <h1 class="is-size-1 has-text-weight-bold has-text-success pl-5">Toyota Green Trips</h1>
+   </nav>
 <!-- main body container -->
-<div>
 <div style="min-height: 80vh" class="columns" id="main-body">
 
 
 <!-- journey input -->
-  <div style="min-width: 500px; overflow: scroll;" class="column is-two-fifths-desktop p-6 is-fixed" id="journeyInputs">
+  <div style="overflow: scroll;" class="column p-6" id="journeyInputs">
 
     <div class="pb-4">
       <p class="mb-6">Introducing the Toyota Carbon Emissions Calculator, an innovative app designed to help you make informed decisions about the environmental impact of your vehicle. With this app, you can easily calculate the carbon emissions of your Toyota vehicle based on your start and end destination. Whether you're planning a road trip, commuting to work, or simply running errands, our app provides you with accurate and up-to-date information on the carbon footprint of your Toyota vehicle.</P>
@@ -76,7 +75,8 @@
     <!-- map div -->
     <div style="min-height: 400px;" id="map" class="column is-two-fifths-desktop"></div>
     
-    <div style="overflow: scroll;" class="column p-6 is-one-fifths-desktop">
+    <!-- saved trips -->
+    <div class="column p-6 is-one-fifth-desktop">
       <h1 class="is-size-3 has-text-success mb-3">Your Saved Trips</h1>
         <div id="search-buttons">
           <p>&nbsp;</p>
@@ -85,7 +85,7 @@
 
   </div>
   <!-- footer div -->
-<div style="height:10vh;" class="footer">
+<div class="footer">
   <div class="p-4 is-flex is-justify-content-space-between">
     <a href="https://github.com/mlukicdesign/GreenTrips" target="_blank">
       <span class="icon is-size-3">
