@@ -20,7 +20,7 @@ By following these steps, users can easily leverage the functionality of the Toy
 ###
 Written by Mackenzie Lukic and Christian Alteri and Chad Geepeetee
 
-To learn more about my project, [click here](http://www.example.com).
+To learn more about our project, [click here](https://mlukicdesign.github.io/GreenTrips/)
 
 
 ####
