@@ -5,6 +5,8 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwSpuOnc9bIBLFQTv-zN8toFryzpAxDbg&libraries=places"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
   <!-- hello world -->
@@ -19,7 +21,7 @@
     </nav>
 
 <!-- main body container -->
-<div class="columns is-desktop" id="main-body">
+<div style="height:85vh" class="columns is-desktop is-fullheight" id="main-body">
 
 
 <!-- journey input -->
@@ -49,7 +51,7 @@
         <h2 class="is-size-3 has-text-success">Select Your Vehicle</h2>
         <p>&nbsp;</p>
 
-        <div class="select is-fullwidth is-active pb-6 is-success mb-5 is-medium">
+        <div class="select is-active pb-6 is-success mb-5 is-medium">
         <select id="car-dropdown" name="car" class="">
           <optgroup label="Toyota">
             <option value="7268a9b7-17e8-4c8d-acca-57059252afe9">Corolla</option>
@@ -73,8 +75,7 @@
     <!-- map div -->
     <div style="min-height: 400px;" id="map" class="column is-two-fifths-desktop"></div>
     
-    <!-- saved Trips -->
-    <div style="overflow: scroll;" class="column p-4 is-one-fifths-desktop">
+    <div style="overflow: scroll;" class="column p-6 is-one-fifths-desktop">
       <h1 class="is-size-3 has-text-success mb-3">Your Saved Trips</h1>
         <div id="search-buttons">
           <p>&nbsp;</p>
@@ -83,15 +84,15 @@
 
   </div>
   <!-- footer div -->
-<div style="background-color: white" class="footer p-4 is-flex is-justify-content-space-between">
-  <a href="https://github.com/mlukicdesign/GreenTrips" target="_blank">
-    <span class="icon is-size-3">
-      <i class="fab fa-github"></i>
-    </span>
-    <p style="display:inline;" class="has-text-success has-text-weight-bold pl-3">Github link here</p>
-  </a>
-  <button id="clearStorage" class="button is-small is-success">Clear Trips</button>
-</div>
+  <div style="background-color: white" class="footer p-4 is-flex is-justify-content-space-between is-full-desktop">
+    <a href="https://github.com/mlukicdesign/GreenTrips" target="_blank">
+      <span class="icon is-size-3">
+        <i class="fab fa-github"></i>
+      </span>
+      <p style="display:inline;" class="has-text-success has-text-weight-bold pl-3">Github link here</p>
+    </a>
+    <button id="clearStorage" class="button is-small is-success">Clear Trips</button>
+  </div>
 
     
 
