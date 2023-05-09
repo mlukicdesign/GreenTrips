@@ -1,6 +1,16 @@
 //  --- Global Variables ---
 const apiKey = "AIzaSyBwSpuOnc9bIBLFQTv-zN8toFryzpAxDbg";
 
+
+document.getElementById('clearStorage').addEventListener('click', function () {
+  function clearLocalStorageAndRefresh() {
+    localStorage.clear();
+    location.reload();
+  };
+  clearLocalStorageAndRefresh();
+});
+
+
 // --- Main call stack ---
 window.addEventListener("load", function () {
   const map = initMap();
