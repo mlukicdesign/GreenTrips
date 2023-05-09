@@ -32,7 +32,6 @@ function getEmission(carId, distanceInKms) {
       document.getElementById("emissions").innerHTML =
       "CO2 Emissions: " + fuelType.carbonOutput + " g";
       fuel.push(fuelType);
-      console.log('Fuel Type',fuelType);
       return fuelType.carbonOutput
     })
     .catch(function (error) {
