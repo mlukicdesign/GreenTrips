@@ -108,7 +108,6 @@ function saveNewJourney(key, locationObj, map) {
 function displaySaved(map) {
   const saved = JSON.parse(localStorage.getItem("savedJourneys"));
   $("#search-buttons").empty();
-  console.log(saved);
 
   for (const journeyName in saved) {
 
@@ -164,7 +163,6 @@ function updateMap(geoDataStart, geoDataEnd, map) {
   return new Promise(function (resolve, reject) {
 
     markers.forEach(function(marker){
-      console.log('heya')
       marker.setMap(null);
     });
     markers = [];
