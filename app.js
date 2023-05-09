@@ -6,7 +6,8 @@ window.addEventListener("load", function () {
   const map = initMap();
   const locationData = getEmptyLocationObj();
   initAutocomplete();
-  // displaySaved();// TODO: Load saved list on load.
+  displaySaved(map);
+  // TODO: Load saved list on load.
 
   document.getElementById("calculate").addEventListener("click", function () {
     const startEl = document.getElementById("start");
@@ -43,10 +44,16 @@ window.addEventListener("load", function () {
         // Pass users car choice, and the journey distance to calculate co2 emissions
         getEmission(carId, distanceInKms).then((co2) => {
           locationData.emissions = co2;
-          saveNewJourney(key, locationData);
+          saveNewJourney(key, locationData, map);
         });
       });
   });
+
+
+
+
+
+
 });
 
 // --- Functions ---
@@ -67,15 +74,16 @@ function getEmptyLocationObj() {
     carId: 0,
   };
 }
+
+// dependency inject
 // 
-function saveNewJourney(key, locationObj) {
+function saveNewJourney(key, locationObj, map) {
   const saved = JSON.parse(localStorage.getItem("savedJourneys")) || {};
 
   if (key in saved) {
     document.getElementById("distance").innerHTML =
       "This journey already exists";
-    // TODO: updateMapandEmissions based on the users input which will be a key we already have saved in our localStorage
-    initMap(); //remove this once updateMap() works
+      updateMap(saved[key].geodata.start, saved[key].geodata.end, map);
   } else if (key === '') {
     document.getElementById("distance").innerHTML = "Whoops! Please enter a name for your journey and try again.";
     document.getElementById("emissions").innerHTML = "Not yet my friend! You need to name this journey.";
@@ -83,29 +91,30 @@ function saveNewJourney(key, locationObj) {
   } else {
     saved[key] = locationObj;
     localStorage.setItem("savedJourneys", JSON.stringify(saved));
-    displaySaved();
+    displaySaved(map);
   }
 }
 // Use template literal to update DOM element "search-buttons" with the journey name ie the key. Use onclick to run updateMap() and pass in parameters.
-function displaySaved() {
+function displaySaved(map) {
   const saved = JSON.parse(localStorage.getItem("savedJourneys"));
   $("#search-buttons").empty();
   console.log(saved);
 
-  for (const [key, locationObj] of Object.entries(saved)) {
+  for (const journeyName in saved) {
+
+    const locationData = saved[journeyName];
+    const geoData = locationData.geodata;
+    const emissionsData = locationData.emissions
+
     const btnHTML = $(`
-    <button class="mybutton button is-medium is-rounded is-fullwidth is-success pb-3" id=${key} onclick="updateMap({lat: -27.4671254, lng: 153.0253696}, {lat: -26.4671254, lng: 153.0253696})">${key}</button>
-    `); // TODO: Change hard coded Lat and Lng object to the geocode.start and geocode.end of the saved[key] object
+    <button class="mybutton button is-medium is-rounded is-fullwidth is-success pb-3" id="${journeyName}">${journeyName}</button>
+    `); 
+    btnHTML.on('click', () => updateMap(geoData.start, geoData.end, map))
     $("#search-buttons").append(btnHTML);
+    // document.getElementById("emissions").innerHTML =
+    //   "CO2 Emissions: " + emissionsData + " g";
   }
 }
-// TODO: Pass the keys data in here so we can access Lat Lng and Emissions.
-
-// function updateMapandEmissions(){
-//   updateMap({lat: -27.4671254, lng: 153.0253696}, {lat: -26.4671254, lng: 153.0253696}, map);
-//   document.getElementById("emissions").innerHTML =
-//       "CO2 Emissions: " + saved.emissions + " g";
-// }
 
 function getGeoData(address) {
   let geocodingStartApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
@@ -131,14 +140,24 @@ function getGeoData(address) {
 //   Create the map
 function initMap() {
   return new google.maps.Map(document.getElementById("map"), {
-    mapId: "91f341ea955a6535",
+    mapId: "8b89d38def86103e",
     center: { lat: -31.953512, lng: 115.857048 },
     zoom: 13,
   });
 }
 // Run the Maps API 
+let markers = [];
 function updateMap(geoDataStart, geoDataEnd, map) {
+  
+
+
   return new Promise(function (resolve, reject) {
+
+    markers.forEach(function(marker){
+      console.log('heya')
+      marker.setMap(null);
+    });
+    markers = [];
     let startMarker = new google.maps.Marker({
       map: map,
       position: geoDataStart,
@@ -150,6 +169,7 @@ function updateMap(geoDataStart, geoDataEnd, map) {
       position: geoDataEnd,
       draggable: true,
     });
+    markers.push(startMarker, endMarker);
 
     let directionsService = new google.maps.DirectionsService();
     let directionsRenderer = new google.maps.DirectionsRenderer({
