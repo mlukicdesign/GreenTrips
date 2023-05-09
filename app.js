@@ -107,7 +107,7 @@ function displaySaved(map) {
     const emissionsData = locationData.emissions
 
     const btnHTML = $(`
-    <button class="mybutton button is-medium is-rounded is-fullwidth is-success pb-3" id="${journeyName}">${journeyName}</button>
+    <button class="mybutton button is-medium is-fullwidth is-success pb-3 mb-3" id="${journeyName}">${journeyName}</button>
     `); 
     btnHTML.on('click', () => updateMap(geoData.start, geoData.end, map))
     $("#search-buttons").append(btnHTML);
